@@ -1,4 +1,4 @@
-import import sys
+import sys
 import heroku3
 
 from config import X1, X2, X3, X4, X5, X6, X7, X8, X9, X10, OWNER_ID, SUDO_USERS, HEROKU_APP_NAME, HEROKU_API_KEY, CMD_HNDLR as hl
@@ -24,7 +24,7 @@ async def ping(e):
         jarvis = await e.reply(f"ℂ𝕙𝕒𝕝𝕔𝕠𝕘𝕖𝕟 ꭙ 𝕊𝕡𝕒𝕞🫧")
         end = datetime.now()
         mp = (end - start).microseconds / 1000
-        await jarvis.edit(f"ℂ𝕙𝕒𝕝𝕔𝕠𝕘𝕖𝕟 ꭙ 𝕊𝕡𝕒𝕞🫧\n» {mp} ᴍꜱ")
+        await jarvis.edit(f"ℂ𝕙𝕒𝕝𝕔𝕠𝕘𝕖𝕟 ꭙ 𝕊𝕡𝕒𝕞🫧\n» `{mp} ᴍꜱ`")
 
 
 @X1.on(events.NewMessage(incoming=True, pattern=r"\%sreboot(?: |$)(.*)" % hl))
@@ -39,7 +39,7 @@ async def ping(e):
 @X10.on(events.NewMessage(incoming=True, pattern=r"\%sreboot(?: |$)(.*)" % hl))
 async def restart(e):
     if e.sender_id in SUDO_USERS:
-        await e.reply(f"𝚁𝙴𝙱𝙾𝙾𝚃 𝙺𝙰𝚁𝙽𝙴 𝚆𝙰𝙻𝙴 𝙺𝙸 𝙼𝙰𝙰 𝙺𝙰 𝙱𝙷𝙾𝚂𝙳𝙰 𝙹𝙴𝙴𝚃𝚄 🙃🙃")
+        await e.reply(f"`ℂ𝕙𝕒𝕝𝕔𝕠𝕘𝕖𝕟 ꭙ 𝕊𝕡𝕒𝕞🫧 𝚁𝙴𝙱𝙾𝙾𝚃 𝙺𝙰𝚁𝙽𝙴 𝚆𝙰𝙻𝙴 𝙺𝙸 𝙼𝙰𝙰 𝙺𝙰 𝙱𝙷𝙾𝚂𝙳𝙰 𝙹𝙴𝙴𝚃𝚄 🙃🙃‘")
         try:
             await X1.disconnect()
         except Exception:
@@ -104,7 +104,7 @@ async def addsudo(event):
         if HEROKU_APP_NAME is not None:
             app = Heroku.app(HEROKU_APP_NAME)
         else:
-            await ok.edit("[HEROKU]:" "\nPlease Setup Your HEROKU_APP_NAME")
+            await ok.edit("`[HEROKU]:" "\nPlease Setup Your` **HEROKU_APP_NAME**")
             return
         heroku_var = app.config()
         if event is None:
@@ -123,11 +123,12 @@ async def addsudo(event):
                 newsudo = f"{sudousers} {target}"
             else:
                 newsudo = f"{target}"
-            await ok.edit(f"» ɴᴇᴡ ꜱᴜᴅᴏ ᴜꜱᴇʀ: {target}\n» 𝙲𝙷𝙰𝙻𝙲𝙾𝙶𝙴𝙽 𝙿𝙰𝙿𝙰 𝚂𝙴 𝚂𝚄𝙳𝙾 𝙻𝙴 𝙻𝙸𝚈𝙰 𝚅𝙴𝚁𝚈 𝙶𝙾𝙾𝙳 🥰")
+            await ok.edit(f"» **ɴᴇᴡ ꜱᴜᴅᴏ ᴜꜱᴇʀ**: `{target}`\n» `𝙲𝙷𝙰𝙻𝙲𝙾𝙶𝙴𝙽 𝙿𝙰𝙿𝙰 𝚂𝙴 𝚂𝚄𝙳𝙾 𝙻𝙴 𝙻𝙸𝚈𝙰 𝚅𝙴𝚁𝚈 𝙶𝙾𝙾𝙳 🥰`")
             heroku_var["SUDO_USERS"] = newsudo    
     
     elif event.sender_id in SUDO_USERS:
         await event.reply("»ℂ𝕙𝕒𝕝𝕔𝕠𝕘𝕖𝕟 ꭙ 𝕊𝕡𝕒𝕞🫧 𝙱𝙰𝙰𝙿 𝚂𝙴 𝙱𝙰𝙺𝙲𝙷𝙾𝙳𝙸 𝙽𝙰𝙸 𝙺𝙰𝚁𝚃𝙴 𝙱𝙴𝚃𝙰 𝙲𝙷𝚄𝙿 𝙲𝙷𝙰𝙿 𝙰𝙿𝙽𝙰 𝙺𝙰𝙰𝙼 𝙺𝚁𝙾")
+
 @X1.on(events.NewMessage(incoming=True, pattern=r"\%sremovesudo(?: |$)(.*)" % hl))
 @X2.on(events.NewMessage(incoming=True, pattern=r"\%sremovesudo(?: |$)(.*)" % hl))
 @X3.on(events.NewMessage(incoming=True, pattern=r"\%sremovesudo(?: |$)(.*)" % hl))
@@ -142,12 +143,12 @@ async def removesudo(event):
     if event.sender_id == OWNER_ID:
         Heroku = heroku3.from_key(HEROKU_API_KEY)
         sudousers = getenv("SUDO_USERS", default=None)
-        ok = await event.reply(f" 𝗡𝗜𝗞𝗔𝗟 𝗗𝗜𝗬𝗔 𝗠𝗔𝗗𝗥𝗖𝗛𝗢𝗗 𝗞𝐎...")
+        ok = await event.reply(f" 𝗡𝗜𝗞𝗔𝗟 𝗗𝗜𝗬𝗔 𝗠𝗔𝗗𝗥𝗖𝗛𝗢𝗗 𝗞𝗢...")
         target = ""
         if HEROKU_APP_NAME is not None:
             app = Heroku.app(HEROKU_APP_NAME)
         else:
-            await ok.edit("[HEROKU]:\nPlease set up your HEROKU_APP_NAME")
+            await ok.edit("`[HEROKU]:\nPlease set up your HEROKU_APP_NAME`")
             return
         heroku_var = app.config()
         if event is None:
@@ -162,10 +163,10 @@ async def removesudo(event):
             await ok.edit("User is not in the sudo list.")
         else:
             new_sudo_users = " ".join([user for user in sudousers.split() if user != str(target)])
-            await ok.edit(f"Removed sudo user: {target}")
+            await ok.edit(f"Removed sudo user: `{target}`")
             heroku_var["SUDO_USERS"] = new_sudo_users
     else:
-        await event.reply("𝙱𝙰𝙰𝙿 𝚂𝙴 𝙱𝙰𝙺𝙲𝙷𝙾𝙳𝙸 𝙽𝙰𝙸 𝙺𝙰𝚁𝚃𝙴 𝙱𝙴𝚃𝙰 𝙲𝙷𝚄𝙿 𝙲𝙷𝙰𝙿 𝙰𝙿𝙽𝙰 𝙺𝙰𝙰𝙼 𝙺𝚁𝙾.")
+        await event.reply("ℂ𝕙𝕒𝕝𝕔𝕠𝕘𝕖𝕟 ꭙ 𝕊𝕡𝕒𝕞🫧 𝙱𝙰𝙰𝙿 𝚂𝙴 𝙱𝙰𝙺𝙲𝙷𝙾𝙳𝙸 𝙽𝙰𝙸 𝙺𝙰𝚁𝚃𝙴 𝙱𝙴𝚃𝙰 𝙲𝙷𝚄𝙿 𝙲𝙷𝙰𝙿 𝙰𝙿𝙽𝙰 𝙺𝙰𝙰𝙼 𝙺𝚁𝙾")
 
 @X1.on(events.NewMessage(incoming=True, pattern=r"\%ssudos(?: |$)(.*)" % hl))
 @X2.on(events.NewMessage(incoming=True, pattern=r"\%ssudos(?: |$)(.*)" % hl))
