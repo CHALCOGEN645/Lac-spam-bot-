@@ -1,4 +1,4 @@
-<h1 align="center"><b>[✨🥀] ˹ℂℍ𝔸𝕃ℂ𝕆𝔾𝔼ℕ ꭙ 𝕊𝕡𝕒𝕞˼🫧 [✨🥀]</b></h1>
+<h1 align="center"><b>[✨🥀]  🇮⃪ 𓆩 ⃝⃪⃕𝐋𝛂𝜍»➤⃟Sρꪖꪑ Bꪮ𝓽 🫧 [✨🥀]</b></h1>
 
 <h4 align="center"> 𝐀 𝐏𝐎𝐖𝐄𝐑𝐅𝐔𝐋 𝐒𝐏𝐀𝐌𝐁𝐎𝐓𝐒</h4>
 <p align="center">
